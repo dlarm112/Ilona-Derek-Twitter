@@ -3,20 +3,19 @@ let max = 140
 let lengthOfSentence = 0
 let container = false
 let carryMessage = ''
+let heart = ''
+let percentage = 0
+let remain = 140
 
 const countLetter = () => {
     lengthOfSentence = tweetArea.value.length
-    let remain = max - lengthOfSentence
-    if (lengthOfSentence > 140) {
-        document.getElementById("remainingArea").innerHTML = `${remain} left`
-        document.getElementById("remainingArea").style.color = 'red'
-    } else {
-        document.getElementById("remainingArea").innerHTML = `${remain} left`
-    }
+    remain = max - lengthOfSentence
+    percentage = (100 / 140) * lengthOfSentence
+    progressBar()
 }
 
 tweetArea.addEventListener("input", countLetter)
-tweetArea.addEventListener('keypress', function(e) {
+tweetArea.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
         tweet()
@@ -27,15 +26,16 @@ let tweetList = []
 
 let tweet = () => {
     let item = {
-        text: document.getElementById("tweetInput").value,   
+        text: document.getElementById("tweetInput").value,
         container: false,
+        likeStatus: false,
     }
 
-    if(item.text == '') {
+    if (item.text == '') {
         return;
     }
 
-    if(lengthOfSentence > 140) {
+    if (lengthOfSentence > 140) {
         return;
     }
 
@@ -46,12 +46,16 @@ let tweet = () => {
 
 let showList = (list) => {
     let message = list.map((item, index) => {
-        if (item.container == false){
-            return `<li>${item.text}<a href="#" onclick="retweet(${index})">Retweet</a></li>`
+        if (item.likeStatus == true) {
+            heart = "(show heart)"
+        } else if (item.likeStatus == false) {
+            heart = ""
         }
-        else if (item.container == true){
-            return `<li>${item.text}<a href="#" onclick="retweet(${index})">Retweet</a><br><h3>${item.carryMessage}</h3></li>`
-        }/*between h3 tags ^ need to by styled for retweet size*/
+        if (item.container == false) {
+            return `<li>${item.text}<a href="#" onclick="retweet(${index})"> Retweet </a><a href="#" id="heartClick" onclick="liked(${index})"> Like ${heart}</a></li>`
+        } else if (item.container == true) {
+            return `<li>${item.text}<a href="#" onclick="retweet(${index})"> Retweet </a><a href="#" id="heartClick" onclick="liked(${index})"> Like ${heart}</a><br><h3>${item.carryMessage}</h3></li>`
+        } /*between h3 tags ^ need to by styled for retweet size*/
     }).join('')
 
     document.getElementById("tweetArea").innerHTML = message
@@ -71,9 +75,26 @@ let retweet = (i) => {
     retweetMessage.carryMessage = sendMessage
     retweetMessage.container = true
     tweetList.splice(0, 0, retweetMessage)
-    
+    retweetMessage.likeStatus = false
     showList(tweetList)
 }
+let liked = (index) => {
+    tweetList[index].likeStatus = !tweetList[index].likeStatus
+    showList(tweetList)
+}
+
+let progressBar = () => {
+    let progressShown
+    if (percentage > 100) {
+        progressShown = `<div class="progress-bar bg-danger" role="progressbar" style="width: ${percentage}%;" aria-valuenow="25"
+    aria-valuemin="0" aria-valuemax="100">${remain} left</div>`
+    } else {
+        progressShown = `<div class="progress-bar" role="progressbar" style="width: ${percentage}%;" aria-valuenow="25"
+    aria-valuemin="0" aria-valuemax="100">${remain} left</div>`
+    }
+    document.getElementById("progress").innerHTML = progressShown
+}
+
 
 
 //hiii

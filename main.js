@@ -46,6 +46,7 @@ let tweet = () => {
 
 let showList = (list) => {
     let message = list.map((item, index) => {
+
         if (item.container == false){
             return `<li>${item.text}<a href="#" onclick="retweet(${index})">Retweet</a></li>`
         }
@@ -67,13 +68,17 @@ let retweet = (i) => {
     let retweetMessage = {
         text: prompt("what do you want to say?")
     }
+
     let sendMessage = tweetList[i].text
     retweetMessage.carryMessage = sendMessage
     retweetMessage.container = true
+
     tweetList.splice(0, 0, retweetMessage)
     
     showList(tweetList)
 }
 
 
+
 //hiii
+

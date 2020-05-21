@@ -52,7 +52,6 @@ let retweet = (i) => {
     let retweetMessage = {
         text: prompt("what do you want to say?")
     }
-    console.log("retweet index", i)
     tweetList.splice(0, 0, tweetList[i])
     tweetList.splice(0, 0, retweetMessage)
     showList(tweetList)

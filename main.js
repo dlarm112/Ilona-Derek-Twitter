@@ -1,4 +1,4 @@
-let tweetArea = document.getElementById("tweetArea")
+let tweetArea = document.getElementById("tweetInput")
 let max = 140
 let lengthOfSentence = 0
 
@@ -19,7 +19,7 @@ let tweetList = []
 
 let tweet = () => {
     let item = {
-        text: document.getElementById("tweetArea").value   
+        text: document.getElementById("tweetInput").value   
     }
 
     if(item.text == '') {
@@ -40,11 +40,11 @@ let showList = (list) => {
         return `<li>${item.text}<a href="#" onclick="retweeet()">Retweet</a></li>`
     }).join('')
 
-    document.getElementById("tweetsArea").innerHTML = message
+    document.getElementById("tweetArea").innerHTML = message
 }
 
 let clearInput = () => {
-    document.getElementById("tweetArea").value = ''
+    document.getElementById("tweetInput").value = ''
     countLetter()
 }
 

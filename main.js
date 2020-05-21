@@ -30,7 +30,7 @@ let tweet = () => {
         return;
     }
 
-    tweetList.push.splice(0, 0, item)
+    tweetList.splice(0, 0, item)
     showList(tweetList)
     clearInput()
 }

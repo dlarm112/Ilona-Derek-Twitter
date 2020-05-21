@@ -7,7 +7,7 @@ let carryMessage = ''
 const countLetter = () => {
     lengthOfSentence = tweetArea.value.length
     let remain = max - lengthOfSentence
-    if (remain < 0) {
+    if (lengthOfSentence > 140) {
         document.getElementById("remainingArea").innerHTML = `${remain} left`
         document.getElementById("remainingArea").style.color = 'red'
     } else {

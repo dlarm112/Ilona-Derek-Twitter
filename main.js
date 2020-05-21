@@ -37,7 +37,7 @@ let tweet = () => {
 
 let showList = (list) => {
     let message = list.map((item, index) => {
-        return `<li>${item.text}<a href="#" onclick="retweeet()">Retweet</a></li>`
+        return `<li>${item.text}<a href="#" onclick="retweet(${index})">Retweet</a></li>`
     }).join('')
 
     document.getElementById("tweetArea").innerHTML = message
@@ -57,5 +57,3 @@ let retweet = (i) => {
     tweetList.splice(0, 0, retweetMessage)
     showList(tweetList)
 }
-
-//

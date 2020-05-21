@@ -20,30 +20,32 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="column col-md-3 nav-column">
-            <div class="container">
-                <!-- Nav side bar-->
-            </div>
-        </div>
-        <div class="column col-md-6">
-            <div class="container">
-                <h1>Twitter</h1>
-                <div class="tweet-box">
-                    <i class="fas fa-user-tie fa-3x"></i>
-                    <textarea type ="text" id ="tweetInput"></textarea>
-                    <button onclick="tweet()">Tweet</button>
-                    <div id="remainingArea"></div>
-                </div>
-                <div>
-                    <ul id="tweetArea">
-                    </ul>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3 nav-column">
+                <div class="container">
+                    <h1>Nav</h1>
                 </div>
             </div>
-        </div>
-        <div class="column col-md-3 news-column">
-            <div class="container">
-                <!-- News -->
+            <div class="col-md-6">
+                <div class="container">
+                    <h1>Twitter</h1>
+                    <div class="tweet-box">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                        <textarea type ="text" id ="tweetInput"></textarea>
+                        <button onclick="tweet()">Tweet</button>
+                        <div id="remainingArea"></div>
+                    </div>
+                    <div>
+                        <ul id="tweetArea">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-md-3 news-column">
+                <div class="container">
+                    <h1>News</h1>
+                </div>
             </div>
         </div>
     </div>

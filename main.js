@@ -71,9 +71,11 @@ let retweet = (i) => {
     let retweetMessage = {
         text: prompt("what do you want to say?")
     }
+
     let sendMessage = tweetList[i].text
     retweetMessage.carryMessage = sendMessage
     retweetMessage.container = true
+
     tweetList.splice(0, 0, retweetMessage)
     retweetMessage.likeStatus = false
     showList(tweetList)
@@ -97,4 +99,3 @@ let progressBar = () => {
 
 
 
-//hiii

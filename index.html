@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -38,15 +37,26 @@
                     </div>
 
                 </div>
-                <div>
-                    <ul id="tweetArea">
-                    </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <h1>Twitter</h1>
+                    <div class="tweet-box">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                        <textarea type ="text" id ="tweetInput"></textarea>
+                        <button onclick="tweet()">Tweet</button>
+                        <div id="remainingArea"></div>
+                    </div>
+                    <div>
+                        <ul id="tweetArea">
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="column col-md-3 news-column">
-            <div class="container">
-                <!-- News -->
+            <div class="column col-md-3 news-column">
+                <div class="container">
+                    <h1>News</h1>
+                </div>
             </div>
         </div>
     </div>

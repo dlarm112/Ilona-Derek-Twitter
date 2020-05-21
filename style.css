@@ -1,0 +1,23 @@
+.nav-column {
+    background-color: aqua;
+    height: 800px;
+}
+
+.news-column {
+    background-color: chartreuse;
+    height: 800px;
+}
+
+.tweet-box {
+    border: 1px solid gray;
+    display: block;
+}
+
+#tweetArea {
+    list-style: none;
+}
+
+#tweetArea > li {
+    border: 1px solid gray;
+    margin-top: 15px;
+}

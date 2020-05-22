@@ -60,6 +60,10 @@
     color: #657786;
 }
 
+#searchBtn {
+    visibility: hidden;
+}
+
 .trends-settings {
     border-bottom: 1px solid #AAB8C2;
     padding-top: 15px;
@@ -67,7 +71,7 @@
 }
 
 .col-trends-title {
-    font-size: 0.95em;
+    font-size: 0.9em;
 }
 
 .col-trends-icon {
@@ -87,18 +91,28 @@
 #news {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     max-height: 90px;
     border: 1px solid #AAB8C2;
     border-radius: 15px;
+    overflow: hidden;
 }
 
-#contentsArea>#source {
+#source {
     font-size: 0.6em;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+#source > a {
+    color: #657786;
 }
 
 #contentsArea>#title {
     font-size: 0.7em;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 a .fill-red {

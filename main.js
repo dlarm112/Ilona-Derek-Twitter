@@ -6,6 +6,8 @@ let heart = ''
 let percentage = 0
 let remain = 140
 let num = 0
+let retweetPrompt = ''
+let promptPop
 
 const countLetter = () => {
     lengthOfSentence = tweetArea.value.length
@@ -31,6 +33,7 @@ let tweet = () => {
         parents: null,
         likeStatus: false,
         id: num,
+        retweetPrompt:'',
     }
 
     if (item.text == '') {
@@ -50,15 +53,15 @@ let tweet = () => {
 let showList = (list) => {
     let message = list.map((item, index) => {
         if (item.likeStatus == true) {
-            heart = "(show heart)"
+            heart = `<i class="material-icons fill-red">favorite</i>`
         } else if (item.likeStatus == false) {
-            heart = ""
+            heart = `<i class="material-icons fill-none">favorite_border</i>`
         }
         if (item.isRetweet == false) {
-            return `<li>${item.text}<a href="#" onclick="retweet(${item.id})"> Retweet </a><a href="#" id="heartClick" onclick="liked(${index})"> Like ${heart}</a></li>`
+            return `<li><h3>${item.text}</h3><a href="#" onclick="retweet(${item.id})"><i class="material-icons rt-icon">repeat</i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="material-icons bubble">chat_bubble_outline</i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a></li>`
         } else if (item.isRetweet == true) {
-            return `<li>Retweeted <a href="#" onclick="retweet(${item.id})"> Retweet </a><a href="#" id="heartClick" onclick="liked(${index})"> Like ${heart}</a><br><h3>${item.text}</h3></li>`
-        } /*between h3 tags ^ need to by styled for retweet size*/
+            return `<li><h3>${item.retweetPrompt}</h3><br><h5>${item.text}</h5><br><a href="#" onclick="retweet(${item.id})"><i class="material-icons rt-icon">repeat</i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="material-icons bubble">chat_bubble_outline</i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a></li>`
+        }
     }).join('')
 
     document.getElementById("tweetArea").innerHTML = message
@@ -72,29 +75,37 @@ let clearInput = () => {
 
 const retweet = (id) => {
     let original = tweetList.find(item => item.id == id)
-
+    retweetPrompt = "Retweeted"
     const retweetObj = {
         text: original.text,
         id:num,
         isRetweet: true,
-        parents: original.id
+        parents: original.id,
+        likeStatus: false,
+        retweetPrompt: 'Retweeted'
     }
-
     tweetList.splice(0, 0, retweetObj)
     num++
     isRetweet = false,
     showList(tweetList)
-    // let retweetMessage = {
-    //     text: prompt("what do you want to say?")
-    // }
-
-    // let sendMessage = tweetList[id].text
-    // retweetMessage.carryMessage = sendMessage
-    // retweetMessage.container = true
-
-    // tweetList.splice(0, 0, retweetMessage)
-    // retweetMessage.likeStatus = false
-    // showList(tweetList)
+}
+const retweetMessage = (id) => {
+    let original = tweetList.find(item => item.id == id)
+    const retweetObj = {
+        text: original.text,
+        id:num,
+        isRetweet: true,
+        parents: original.id,
+        likeStatus: false,
+        retweetPrompt: prompt("What do you want to say?", '','')
+    }
+    if (retweetObj.retweetPrompt == ''){
+        retweetObj.retweetPrompt = 'Retweeted'
+    }
+    tweetList.splice(0, 0, retweetObj)
+    num++
+    isRetweet = false,
+    showList(tweetList)
 }
 let liked = (id) => {
     tweetList[id].likeStatus = !tweetList[id].likeStatus

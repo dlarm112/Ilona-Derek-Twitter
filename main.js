@@ -8,6 +8,8 @@ let remain = 140
 let num = 0
 let retweetPrompt = ''
 let promptPop
+let parent = null
+let parentStatus
 
 const countLetter = () => {
     lengthOfSentence = tweetArea.value.length
@@ -30,10 +32,11 @@ let tweet = () => {
     let item = {
         text: document.getElementById("tweetInput").value,
         isRetweet: false,
-        parents: null,
+        parent: -1,
         likeStatus: false,
         id: num,
-        retweetPrompt:'',
+        retweetPrompt: '',
+        parentStatus: true,
     }
 
     if (item.text == '') {
@@ -52,20 +55,26 @@ let tweet = () => {
 
 let showList = (list) => {
     let message = list.map((item, index) => {
+  
+        if (item.parentStatus == false) {
+            trash(index)
+        }
+
         if (item.likeStatus == true) {
-            heart = `<i class="material-icons fill-red">favorite</i>`
+            heart = `<i class="fas fa-heart fill-red"></i>`
         } else if (item.likeStatus == false) {
-            heart = `<i class="material-icons fill-none">favorite_border</i>`
+            heart = `<i class="far fa-heart fill-none"></i>`
         }
         if (item.isRetweet == false) {
-            return `<li><h3>${item.text}</h3><a href="#" onclick="retweet(${item.id})"><i class="material-icons rt-icon">repeat</i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="material-icons bubble">chat_bubble_outline</i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a></li>`
+            return `<li><h3>${item.text}</h3><a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a><a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a></li>`
         } else if (item.isRetweet == true) {
-            return `<li><h3>${item.retweetPrompt}</h3><br><h5>${item.text}</h5><br><a href="#" onclick="retweet(${item.id})"><i class="material-icons rt-icon">repeat</i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="material-icons bubble">chat_bubble_outline</i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a></li>`
+            return `<li><h3>${item.retweetPrompt}</h3><br><h5>${item.text}</h5><br><a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a><a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a></li>`
         }
     }).join('')
 
     document.getElementById("tweetArea").innerHTML = message
     console.log("tweet array", tweetList)
+
 }
 
 let clearInput = () => {
@@ -78,40 +87,44 @@ const retweet = (id) => {
     retweetPrompt = "Retweeted"
     const retweetObj = {
         text: original.text,
-        id:num,
+        id: num,
         isRetweet: true,
-        parents: original.id,
+        parent: original.id,
         likeStatus: false,
         retweetPrompt: 'Retweeted'
     }
     tweetList.splice(0, 0, retweetObj)
     num++
     isRetweet = false,
-    showList(tweetList)
+        showList(tweetList)
 }
 const retweetMessage = (id) => {
     let original = tweetList.find(item => item.id == id)
     const retweetObj = {
         text: original.text,
-        id:num,
+        id: num,
         isRetweet: true,
-        parents: original.id,
+        parent: original.id,
         likeStatus: false,
-        retweetPrompt: prompt("What do you want to say?", '','')
+        retweetPrompt: prompt("What do you want to say?", '', '')
     }
-    if (retweetObj.retweetPrompt == ''){
+    if (retweetObj.retweetPrompt == '') {
         retweetObj.retweetPrompt = 'Retweeted'
     }
     tweetList.splice(0, 0, retweetObj)
     num++
     isRetweet = false,
-    showList(tweetList)
+        showList(tweetList)
 }
 let liked = (id) => {
     tweetList[id].likeStatus = !tweetList[id].likeStatus
     showList(tweetList)
 }
 
+let trash = (i) => {
+    tweetList.splice(i, 1)
+    showList(tweetList)
+}
 let progressBar = () => {
     let progressShown
     if (percentage > 100) {
@@ -131,19 +144,13 @@ let pageSize = 10
 
 const apiKey = "6c380f89bed94699b3f75b8d9e88f14e"
 
-const loadNews = async() => {
+const loadNews = async () => {
     let url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=${keyword}&language=en&pagesize=${pageSize}&apiKey=${apiKey}`
     let data = await fetch(url)
     let result = await data.json()
     newsList = result.articles
     render(newsList)
-} 
-
-document.body.addEventListener("keyup", function(event) {
-    if(event.keyCode == 13) {
-        searchBtn.click()
-    }
-})
+}
 
 const searchByKeyword = () => {
     keyword = document.getElementById("searchInput").value
@@ -167,4 +174,3 @@ const render = (list) => {
 }
 
 loadNews()
-

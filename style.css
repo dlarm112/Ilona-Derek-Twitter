@@ -117,7 +117,10 @@
 
 a .fill-red {
     color: rgb(222, 41, 96);
-    padding: 5px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
     border-radius: 50%;
     transition-duration: .3s;
 }
@@ -136,7 +139,10 @@ a .fill-none:hover {
 
 a .fill-none {
     color: rgb(107, 123, 133);
-    padding: 5px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -144,7 +150,10 @@ a .fill-none {
 
 a .rt-icon {
     color: rgb(107, 123, 133);
-    padding: 5px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -158,7 +167,10 @@ a .rt-icon:hover {
 
 a .bubble{
     color: rgb(107, 123, 133);
-    padding: 5px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;

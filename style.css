@@ -40,6 +40,11 @@
     color: white;
 }
 
+.nav-button:hover {
+    background-color: rgb(37, 146, 214);
+    transition-duration: 0.3s;
+}
+
 .fa-search {
     position: absolute;
     padding-left: 10px;
@@ -96,6 +101,10 @@
     border: 1px solid #AAB8C2;
     border-radius: 15px;
     overflow: hidden;
+}
+
+.news-img {
+    object-fit: cover;
 }
 
 #source {

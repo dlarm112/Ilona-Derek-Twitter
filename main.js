@@ -113,5 +113,41 @@ let progressBar = () => {
     document.getElementById("progress").innerHTML = progressShown
 }
 
+// Trending Area
+let newsList = []
+let keyword = "business"
+let pageSize = 10
 
+const apiKey = "6c380f89bed94699b3f75b8d9e88f14e"
+
+const loadNews = async() => {
+    let url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=${keyword}&language=en&pagesize=${pageSize}&apiKey=${apiKey}`
+    let data = await fetch(url)
+    let result = await data.json()
+    newsList = result.articles
+    render(newsList)
+}
+
+const searchByKeyword = () => {
+    keyword = document.getElementById("searchInput").value
+    loadNews()
+}
+
+const render = (list) => {
+    let newsHtml = list.map(item => `
+        <div id="news">
+            <div id="contentsArea">
+                <div id="source"><a href="${item.url}">${item.source.name}</a></div>
+                <div id="title">${item.title}</div>
+            </div>
+            <div id="imgArea">
+                <img src="${item.urlToImage}" width="90" height="90" />
+            </div>
+        </div>
+    `).join('')
+
+    document.getElementById("newsArea").innerHTML = newsHtml
+}
+
+loadNews()
 

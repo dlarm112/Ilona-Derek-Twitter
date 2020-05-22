@@ -18,12 +18,42 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="column col-md-3 nav-column">
-            <div class="container">
-                <!-- Nav side bar-->
+     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3 nav-column">
+                <div class="container">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-hashtag"></i>Explore</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-bell"></i>Notifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-envelope"></i>Messages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-bookmark"></i>Bookmarks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-list-alt"></i>Lists</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-user-circle"></i>Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-ellipsis-h"></i>More</a>
+                        </li>
+                    </ul>
+                    <button class="nav-button">Tweet</button>
+                </div>
             </div>
-        </div>
             <div class="col-md-6">
                 <div class="container">
                     <h1>Twitter</h1>
@@ -33,7 +63,6 @@
                         <button onclick="tweet()">Tweet</button>
                         <div class="progress" id="progress"></div>
                     </div>
-        
                     <div>
                         <ul id="tweetArea">
                         </ul>
@@ -42,13 +71,26 @@
             </div>
             <div class="column col-md-3 news-column">
                 <div class="container">
-                    <h1>News</h1>
+                    <div class="flex-column">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                            <input type="text" id="searchInput" placeholder="Search Twitter" />
+                        </div>
+                        <div class="trends-settings">
+                            <div class="row">
+                                <div class="col col-trends-title">Trends for you</div>
+                                <div class="col col-trends-icon"><i class="fas fa-cog"></i></div>
+                            </div>
+                        </div>
+                        <div id="newsArea">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="main.js"></script>
+    <script src="https://unpkg.com/moment"></script>
 </body>
-
 </html>

@@ -126,7 +126,13 @@ const loadNews = async() => {
     let result = await data.json()
     newsList = result.articles
     render(newsList)
-}
+} 
+
+document.body.addEventListener("keyup", function(event) {
+    if(event.keyCode == 13) {
+        searchBtn.click()
+    }
+})
 
 const searchByKeyword = () => {
     keyword = document.getElementById("searchInput").value

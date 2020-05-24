@@ -1,21 +1,53 @@
-.tweet-box {
-    border: 1px solid gray;
-    display: block;
+.profile-pic {
+    border-radius: 50%;
 }
+
+.home {
+    border-bottom: lightgray 1px solid;
+    padding: 10px;
+}
+.tweet-box{
+    padding: 10px
+}
+h4 {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 20px;
+}
+
+textarea:focus {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.right-line {
+    border-right: 1px lightgray solid;
+}
+
+
 
 #tweetArea {
     list-style: none;
+    padding: 0;
 }
 
 #tweetArea>li {
-    border: 1px solid gray;
-    margin-top: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
 .fa-twitter {
     margin-bottom: 10px;
     color: #1DA1F2;
 }
+
 
 .nav-link {
     color: #14171A;
@@ -31,7 +63,7 @@
 
 .nav-button {
     margin-top: 20px;
-    width: 220px;
+    width: 180px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(29, 161, 242);
@@ -40,10 +72,36 @@
     color: white;
 }
 
-.nav-button:hover {
-    background-color: rgb(37, 146, 214);
-    transition-duration: 0.3s;
+
+.nav-button:focus {
+    outline: none;
 }
+
+.nav-button:hover {
+    background-color: rgb(26, 140, 211);
+}
+
+.tweet-button {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 80px;
+    padding: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(29, 161, 242);
+    border-radius: 30px;
+    border-style: none;
+    color: white;
+    outline: none;
+}
+
+.tweet-button:hover {
+    background-color: rgb(26, 140, 211);
+}
+
+.tweet-button:focus {
+    outline: none
+=======
+
 
 .fa-search {
     position: absolute;
@@ -70,7 +128,7 @@
 }
 
 .trends-settings {
-    border-bottom: 1px solid #AAB8C2;
+    border-bottom: 1px solid lightgray;
     padding-top: 15px;
     padding-bottom: 5px;
 }
@@ -103,8 +161,14 @@
     overflow: hidden;
 }
 
+
+.news-column {
+    border-left: 1px lightgray solid;
+    height: 1000px;
+=======
 .news-img {
     object-fit: cover;
+
 }
 
 #source {
@@ -114,7 +178,7 @@
     padding-bottom: 5px;
 }
 
-#source > a {
+#source>a {
     color: #657786;
 }
 
@@ -128,10 +192,13 @@ a .fill-red {
     color: rgb(222, 41, 96);
     height: 35px;
     width: 35px;
+    padding: 8px 0;
     text-align: center;
     align-items: center;
+    margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
+
 }
 
 a .fill-red:hover {
@@ -152,6 +219,7 @@ a .fill-none {
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -163,6 +231,7 @@ a .rt-icon {
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -174,18 +243,85 @@ a .rt-icon:hover {
     transition-duration: .3s;
 }
 
-a .bubble{
+a .bubble {
     color: rgb(107, 123, 133);
     height: 35px;
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
 }
-a .bubble:hover{
+
+a .bubble:hover {
     color: rgb(29, 161, 242);
     background-color: rgba(29, 161, 242, .1);
     transition-duration: .3s;
+}
+
+a .fa-trash {
+    color: rgb(107, 123, 133);
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
+    padding: 8px 0;
+    margin: 3px;
+    border-radius: 50%;
+    transition-duration: .3s;
+}
+
+a .fa-trash:hover {
+    color: rgb(67, 83, 93);
+    background-color: rgba(67, 83, 93, .1);
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
+    padding: 8px 0;
+    margin: 3px;
+    border-radius: 50%;
+    transition-duration: .3s;
+}
+
+li {
+    padding: 10px;
+}
+.retweeted-text{
+    color: #555555;
+}
+.retweet-box{
+    border: lightgray solid 1px;
+    border-radius: 8px;
+    padding: 10px;
+}
+.progress-bar{
+    background-color: rgb(29, 161, 242);
+}
+
+#userInput {
+    width: 300px;
+    margin-top: 10px;
+    padding-right: 10px;
+    padding-left: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #E1E8ED;
+    border-radius: 30px;
+    border-style: none;
+    color: #657786;
+}
+
+#userBtn {
+    visibility: hidden;
+}
+#userInput:focus{
+    outline: none;
+    border: none;
+}
+#searchInput:focus{
+    outline: none;
+    border: none;
 }

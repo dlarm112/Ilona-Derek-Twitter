@@ -1,21 +1,53 @@
-.tweet-box {
-    border: 1px solid gray;
-    display: block;
+.profile-pic {
+    border-radius: 50%;
 }
+
+.home {
+    border-bottom: lightgray 1px solid;
+    padding: 10px;
+}
+.tweet-box{
+    padding: 10px
+}
+h4 {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 20px;
+}
+
+textarea:focus {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.right-line {
+    border-right: 1px lightgray solid;
+}
+
+
 
 #tweetArea {
     list-style: none;
+    padding: 0;
 }
 
 #tweetArea>li {
-    border: 1px solid gray;
-    margin-top: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
 .fa-twitter {
     margin-bottom: 10px;
     color: #1DA1F2;
 }
+
 
 .nav-link {
     color: #14171A;
@@ -31,13 +63,42 @@
 
 .nav-button {
     margin-top: 20px;
-    width: 220px;
+    width: 180px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(29, 161, 242);
     border-radius: 30px;
     border-style: none;
     color: white;
+}
+
+.nav-button:focus {
+    outline: none;
+}
+
+.nav-button:hover {
+    background-color: rgb(26, 140, 211);
+}
+
+.tweet-button {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 80px;
+    padding: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(29, 161, 242);
+    border-radius: 30px;
+    border-style: none;
+    color: white;
+    outline: none;
+}
+
+.tweet-button:hover {
+    background-color: rgb(26, 140, 211);
+}
+
+.tweet-button:focus {
+    outline: none
 }
 
 .fa-search {
@@ -65,7 +126,7 @@
 }
 
 .trends-settings {
-    border-bottom: 1px solid #AAB8C2;
+    border-bottom: 1px solid lightgray;
     padding-top: 15px;
     padding-bottom: 5px;
 }
@@ -98,6 +159,11 @@
     overflow: hidden;
 }
 
+.news-column {
+    border-left: 1px lightgray solid;
+    height: 1000px;
+}
+
 #source {
     font-size: 0.6em;
     padding-left: 10px;
@@ -122,6 +188,7 @@ a .fill-red {
     padding: 8px 0;
     text-align: center;
     align-items: center;
+    margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
 
@@ -198,8 +265,10 @@ a .fa-trash {
     border-radius: 50%;
     transition-duration: .3s;
 }
+
 a .fa-trash:hover {
     color: rgb(67, 83, 93);
+    background-color: rgba(67, 83, 93, .1);
     height: 35px;
     width: 35px;
     text-align: center;
@@ -208,4 +277,44 @@ a .fa-trash:hover {
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
+}
+
+li {
+    padding: 10px;
+}
+.retweeted-text{
+    color: #555555;
+}
+.retweet-box{
+    border: lightgray solid 1px;
+    border-radius: 8px;
+    padding: 10px;
+}
+.progress-bar{
+    background-color: rgb(29, 161, 242);
+}
+
+#userInput {
+    width: 300px;
+    margin-top: 10px;
+    padding-right: 10px;
+    padding-left: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #E1E8ED;
+    border-radius: 30px;
+    border-style: none;
+    color: #657786;
+}
+
+#userBtn {
+    visibility: hidden;
+}
+#userInput:focus{
+    outline: none;
+    border: none;
+}
+#searchInput:focus{
+    outline: none;
+    border: none;
 }

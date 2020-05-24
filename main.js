@@ -72,6 +72,9 @@ let tweet = () => {
 }
 
 
+let imgUrl = document.getElementById("tweetInput")
+
+
 let showList = (list) => {
     let message = list.map((item, index) => {
  
@@ -227,7 +230,7 @@ const render = (list) => {
                 <div id="title">${item.title}</div>
             </div>
             <div id="imgArea">
-                <img src="${item.urlToImage}" width="90" height="90" />
+                <img class="news-img" src="${item.urlToImage}" width="90" height="90" />
             </div>
         </div>
     `).join('')

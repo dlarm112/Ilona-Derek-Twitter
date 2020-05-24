@@ -72,6 +72,7 @@ textarea:focus {
     color: white;
 }
 
+
 .nav-button:focus {
     outline: none;
 }
@@ -99,7 +100,8 @@ textarea:focus {
 
 .tweet-button:focus {
     outline: none
-}
+=======
+
 
 .fa-search {
     position: absolute;
@@ -159,9 +161,14 @@ textarea:focus {
     overflow: hidden;
 }
 
+
 .news-column {
     border-left: 1px lightgray solid;
     height: 1000px;
+=======
+.news-img {
+    object-fit: cover;
+
 }
 
 #source {

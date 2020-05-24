@@ -32,7 +32,7 @@ let tweet = () => {
     let item = {
         text: document.getElementById("tweetInput").value,
         isRetweet: false,
-        parent: -1,
+        parent: null,
         likeStatus: false,
         id: num,
         retweetPrompt: '',
@@ -53,13 +53,9 @@ let tweet = () => {
     clearInput()
 }
 
+
 let showList = (list) => {
     let message = list.map((item, index) => {
-  
-        if (item.parentStatus == false) {
-            trash(index)
-        }
-
         if (item.likeStatus == true) {
             heart = `<i class="fas fa-heart fill-red"></i>`
         } else if (item.likeStatus == false) {

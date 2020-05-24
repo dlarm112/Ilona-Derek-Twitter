@@ -105,7 +105,7 @@
     padding-bottom: 5px;
 }
 
-#source > a {
+#source>a {
     color: #657786;
 }
 
@@ -119,10 +119,12 @@ a .fill-red {
     color: rgb(222, 41, 96);
     height: 35px;
     width: 35px;
+    padding: 8px 0;
     text-align: center;
     align-items: center;
     border-radius: 50%;
     transition-duration: .3s;
+
 }
 
 a .fill-red:hover {
@@ -143,6 +145,7 @@ a .fill-none {
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -154,6 +157,7 @@ a .rt-icon {
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
@@ -165,18 +169,43 @@ a .rt-icon:hover {
     transition-duration: .3s;
 }
 
-a .bubble{
+a .bubble {
     color: rgb(107, 123, 133);
     height: 35px;
     width: 35px;
     text-align: center;
     align-items: center;
+    padding: 8px 0;
     margin: 3px;
     border-radius: 50%;
     transition-duration: .3s;
 }
-a .bubble:hover{
+
+a .bubble:hover {
     color: rgb(29, 161, 242);
     background-color: rgba(29, 161, 242, .1);
+    transition-duration: .3s;
+}
+
+a .fa-trash {
+    color: rgb(107, 123, 133);
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
+    padding: 8px 0;
+    margin: 3px;
+    border-radius: 50%;
+    transition-duration: .3s;
+}
+a .fa-trash:hover {
+    color: rgb(67, 83, 93);
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    align-items: center;
+    padding: 8px 0;
+    margin: 3px;
+    border-radius: 50%;
     transition-duration: .3s;
 }

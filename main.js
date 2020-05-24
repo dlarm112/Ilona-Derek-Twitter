@@ -10,6 +10,9 @@ let retweetPrompt = ''
 let promptPop
 let parent = null
 let parentStatus
+let userName = "Obama"
+let userNameArea = document.getElementById("userInput")
+let newsArea = document.getElementById("searchInput")
 
 const countLetter = () => {
     lengthOfSentence = tweetArea.value.length
@@ -17,7 +20,22 @@ const countLetter = () => {
     percentage = (100 / 140) * lengthOfSentence
     progressBar()
 }
-
+let changeUser = () =>{
+    userName = document.getElementById("userInput").value
+    document.getElementById("userInput").value = ''
+}
+newsArea.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        searchByKeyword();
+    }
+});   
+userNameArea.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        changeUser()
+    }
+});    
 tweetArea.addEventListener("input", countLetter)
 tweetArea.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
@@ -32,7 +50,7 @@ let tweet = () => {
     let item = {
         text: document.getElementById("tweetInput").value,
         isRetweet: false,
-        parent: -1,
+        parent: null,
         likeStatus: false,
         id: num,
         retweetPrompt: '',
@@ -53,26 +71,69 @@ let tweet = () => {
     clearInput()
 }
 
-// Upload image through URL 
+
 let imgUrl = document.getElementById("tweetInput")
+
 
 let showList = (list) => {
     let message = list.map((item, index) => {
-  
-        if (item.parentStatus == false) {
-            trash(index)
-        }
-
+ 
         if (item.likeStatus == true) {
             heart = `<i class="fas fa-heart fill-red"></i>`
         } else if (item.likeStatus == false) {
             heart = `<i class="far fa-heart fill-none"></i>`
         }
         if (item.isRetweet == false) {
-            return `<li><h3>${item.text}</h3><a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a><a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a></li>`
+            return `<li>
+            <div class="row justify-content-between">
+                <div class="col-2"><img src="img/barack-obama-12782369-1-402.jpg" class="profile-pic" width=50 height=50>
+                </div>
+                <div class="col-10">
+                <p><b>@${userName}</b></p>
+                    <p>${item.text}</p>
+                </div>
+                <div class="row align-items-end">
+                <div class="col">
+                    <a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a>
+                </div>
+                <div class="col">
+                    <a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a>
+                </div>
+                <div class="col">
+                    <a href="#" id="heartClick" onclick="liked(${index})">${heart}</a>
+                </div>
+                <div class="col">
+                    <a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a>
+                </div>
+                </div>
+            </div>
+        </li>`
         } else if (item.isRetweet == true) {
-            return `<li><h3>${item.retweetPrompt}</h3><br><h5>${item.text}</h5><br><a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a><a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a><a href="#" id="heartClick" onclick="liked(${index})">${heart}</a><a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a></li>`
-        }
+            return `<li>
+            <div class="row">
+                <div class="col-2"><img src="img/barack-obama-12782369-1-402.jpg" class="profile-pic" width=50 height=50>
+                </div>
+                <div class="col-10">
+                <p><b>@${userName}</b></p>
+                <p class="retweeted-text"><i class="fas fa-retweet rt-icon"></i> You Retweeted</p><p>${item.retweetPrompt}</p>
+                    <p class="retweet-box container">${item.text}</p>
+                </div>
+                <div class="row align-items-end">
+                <div class="col">
+                    <a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a>
+                </div>
+                <div class="col">
+                    <a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a>
+                </div>
+                <div class="col">
+                    <a href="#" id="heartClick" onclick="liked(${index})">${heart}</a>
+                </div>
+                <div class="col">
+                    <a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a>
+                </div>
+                </div>
+            </div>
+        </li>`}
     }).join('')
 
     document.getElementById("tweetArea").innerHTML = message
@@ -94,7 +155,7 @@ const retweet = (id) => {
         isRetweet: true,
         parent: original.id,
         likeStatus: false,
-        retweetPrompt: 'Retweeted'
+        retweetPrompt: ''
     }
     tweetList.splice(0, 0, retweetObj)
     num++
@@ -111,7 +172,7 @@ const retweetMessage = (id) => {
         likeStatus: false,
         retweetPrompt: prompt("What do you want to say?", '', '')
     }
-    if (retweetObj.retweetPrompt == '') {
+    if (retweetObj.retweetPrompt == null) {
         retweetObj.retweetPrompt = 'Retweeted'
     }
     tweetList.splice(0, 0, retweetObj)
@@ -158,6 +219,7 @@ const loadNews = async () => {
 const searchByKeyword = () => {
     keyword = document.getElementById("searchInput").value
     loadNews()
+    document.getElementById("searchInput").value = ''
 }
 
 const render = (list) => {

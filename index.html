@@ -22,8 +22,8 @@
 
 <body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-3 nav-column">
+        <div class="row no-gutters justify-content-center">
+            <div class="right-line col-md-3 nav-column">
                 <div class="container">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -58,23 +58,37 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="container">
-                    <h1>Twitter</h1>
-                    <div class="tweet-box">
-                        <i class="fas fa-user-tie fa-3x"></i>
-                        <textarea type="text" id="tweetInput"></textarea>
-                        <button onclick="tweet()">Tweet</button>
-                        <div class="progress" id="progress"></div>
+                <div class="home">
+                    <h4>Home</h4>
+                </div>
+                <div class="row tweet-box">
+                    <div class="col align-self-start">
+                        <img src="img/barack-obama-12782369-1-402.jpg" class="profile-pic" width=50 height=50>
                     </div>
-                    <div>
-                        <ul id="tweetArea">
-                        </ul>
+                    <div class="col-10 align-self-center">
+                        <textarea placeholder="What's happening?" type="text" id="tweetInput"></textarea>
                     </div>
+                </div>
+                <div class="row container justify-content-end">
+                    <div width=100 class="align-self-center">
+                        <button class="tweet-button" onclick="tweet()">Tweet</button>
+                    </div>
+                </div>
+                <div class="progress" id="progress"></div>
+
+                <div>
+                    <ul id="tweetArea">
+                    </ul>
                 </div>
             </div>
             <div class="column col-md-3 news-column">
                 <div class="container">
                     <div class="flex-column">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input type="text" id="userInput" placeholder="Change Username" />
+                            <button id="userBtn" onclick="changeUser()"></button>
+                        </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-search"></i></span>
                             <input type="text" id="searchInput" placeholder="Search Twitter" />
@@ -82,7 +96,7 @@
                         </div>
                         <div class="trends-settings">
                             <div class="row">
-                                <div class="col col-trends-title">Trends for you</div>
+                                <div class="col col-trends-title"><h4>Trends for you</h4></div>
                                 <div class="col col-trends-icon"><i class="fas fa-cog"></i></div>
                             </div>
                         </div>

@@ -47,8 +47,12 @@ tweetArea.addEventListener('keypress', function (e) {
 let tweetList = []
 
 let tweet = () => {
+    let hashTag = tweetArea.value.match(/#[^\s#\.\;]*/gmi)
+    let str = tweetArea.value
+    let newStr = str.replace(/#[^\s#\.\;]*/gmi, `<a href="#">${hashTag}</a>`)
+
     let item = {
-        text: document.getElementById("tweetInput").value,
+        text: newStr,
         isRetweet: false,
         parent: null,
         likeStatus: false,
@@ -64,7 +68,7 @@ let tweet = () => {
     if (lengthOfSentence > 140) {
         return;
     }
-
+    
     tweetList.splice(0, 0, item)
     num++
     showList(tweetList)
@@ -72,12 +76,9 @@ let tweet = () => {
 }
 
 
-let imgUrl = document.getElementById("tweetInput")
-
-
 let showList = (list) => {
     let message = list.map((item, index) => {
- 
+      
         if (item.likeStatus == true) {
             heart = `<i class="fas fa-heart fill-red"></i>`
         } else if (item.likeStatus == false) {
@@ -138,7 +139,6 @@ let showList = (list) => {
 
     document.getElementById("tweetArea").innerHTML = message
     console.log("tweet array", tweetList)
-
 }
 
 let clearInput = () => {
@@ -239,3 +239,4 @@ const render = (list) => {
 }
 
 loadNews()
+

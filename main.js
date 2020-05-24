@@ -49,7 +49,7 @@ let tweetList = []
 let tweet = () => {
     let hashTag = tweetArea.value.match(/#[^\s#\.\;]*/gmi)
     let str = tweetArea.value
-    let newStr = str.replace(/#[^\s#\.\;]*/gmi, `<a href="#">${hashTag}</a>`)
+    let newStr = str.replace(/#[^\s#\.\;]*/gmi, `<a href="#">${hashTag.join(' ')}</a>`)
 
     let item = {
         text: newStr,
@@ -86,26 +86,29 @@ let showList = (list) => {
         }
         if (item.isRetweet == false) {
             return `<li>
-            <div class="row justify-content-between">
-                <div class="col-2"><img src="img/barack-obama-12782369-1-402.jpg" class="profile-pic" width=50 height=50>
+            <div class="row">
+                <div class="col-2">
+                    <img src="img/barack-obama-12782369-1-402.jpg" class="profile-pic" width=50 height=50 />
                 </div>
                 <div class="col-10">
-                <p><b>@${userName}</b></p>
-                    <p>${item.text}</p>
-                </div>
-                <div class="row align-items-end">
-                <div class="col">
-                    <a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a>
-                </div>
-                <div class="col">
-                    <a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a>
-                </div>
-                <div class="col">
-                    <a href="#" id="heartClick" onclick="liked(${index})">${heart}</a>
-                </div>
-                <div class="col">
-                    <a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a>
-                </div>
+                    <div class="column">
+                    <p><b>@${userName}</b></p>
+                        <p>${item.text}</p>
+                    </div>
+                    <div class="row icon-row">
+                        <div class="col-2">
+                            <a href="#" onclick="retweetMessage(${item.id})"><i class="far fa-comment bubble"></i></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#" onclick="retweet(${item.id})"><i class="fas fa-retweet rt-icon"></i></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#" id="heartClick" onclick="liked(${index})">${heart}</a>
+                        </div>
+                        <div class="col-2">
+                            <a href="#" onclick="trash(${index})"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>`

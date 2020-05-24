@@ -6,9 +6,11 @@
     border-bottom: lightgray 1px solid;
     padding: 10px;
 }
+
 .tweet-box{
     padding: 10px
 }
+
 h4 {
     font-weight: bold;
     padding-top: 10px;
@@ -32,8 +34,6 @@ textarea:focus {
     border-right: 1px lightgray solid;
 }
 
-
-
 #tweetArea {
     list-style: none;
     padding: 0;
@@ -47,7 +47,6 @@ textarea:focus {
     margin-bottom: 10px;
     color: #1DA1F2;
 }
-
 
 .nav-link {
     color: #14171A;
@@ -71,7 +70,6 @@ textarea:focus {
     border-style: none;
     color: white;
 }
-
 
 .nav-button:focus {
     outline: none;
@@ -100,8 +98,7 @@ textarea:focus {
 
 .tweet-button:focus {
     outline: none
-=======
-
+}
 
 .fa-search {
     position: absolute;
@@ -134,21 +131,21 @@ textarea:focus {
 }
 
 .col-trends-title {
+    display: flex;
+    align-items: center;
     font-size: 0.9em;
 }
 
 .col-trends-icon {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
-.trends-world {
-    margin-top: 10px;
-}
-
-.trends-world>h6 {
-    font-size: 12px;
-    color: #657786;
+.fa-cog:hover {
+    cursor: pointer;
+    color: #1DA1F2;
 }
 
 #news {
@@ -161,14 +158,13 @@ textarea:focus {
     overflow: hidden;
 }
 
-
 .news-column {
     border-left: 1px lightgray solid;
     height: 1000px;
-=======
+}
+
 .news-img {
     object-fit: cover;
-
 }
 
 #source {
@@ -178,11 +174,11 @@ textarea:focus {
     padding-bottom: 5px;
 }
 
-#source>a {
+#source > a {
     color: #657786;
 }
 
-#contentsArea>#title {
+#contentsArea > #title {
     font-size: 0.7em;
     padding-left: 10px;
     padding-right: 10px;
@@ -289,14 +285,17 @@ a .fa-trash:hover {
 li {
     padding: 10px;
 }
+
 .retweeted-text{
     color: #555555;
 }
+
 .retweet-box{
     border: lightgray solid 1px;
     border-radius: 8px;
     padding: 10px;
 }
+
 .progress-bar{
     background-color: rgb(29, 161, 242);
 }
@@ -317,10 +316,12 @@ li {
 #userBtn {
     visibility: hidden;
 }
+
 #userInput:focus{
     outline: none;
     border: none;
 }
+
 #searchInput:focus{
     outline: none;
     border: none;

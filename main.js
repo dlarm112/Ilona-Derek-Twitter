@@ -242,4 +242,3 @@ const render = (list) => {
 }
 
 loadNews()
-

@@ -49,7 +49,7 @@ let tweetList = []
 let tweet = () => {
     let hashTag = tweetArea.value.match(/#[^\s#\.\;]*/gmi)
     let str = tweetArea.value
-    let newStr = str.replace(/#[^\s#\.\;]*/gmi, `<a href="#">${hashTag.join(' ')}</a>`)
+    let newStr = str.replace(/#[^\s#\.\;]*/gmi, `<a href="#">${hashTag}</a>`)
 
     let item = {
         text: newStr,
